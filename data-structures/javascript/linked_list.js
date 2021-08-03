@@ -17,7 +17,7 @@ class LinkedList {
   }
   /* adding to end */
   add_to_end(new_item) {
-    if (this.head === null) {
+    if (this.isEmpty) {
       this.add_to_begining(new_item);
       return;
     }
@@ -33,7 +33,7 @@ class LinkedList {
 
   /* inserting at */
   insert_at(index, new_item) {
-    if (index-1 > this.length()-1 || index < 0) {
+    if (index > this.length()-1 || index < 0) {
       throw new Error("Invalid index");
     }
     if (index === 0) {
@@ -52,7 +52,7 @@ class LinkedList {
     }
   }
 
-  /* replace at */
+  /* delete at */
   delete_at(index) {
     if (index-1 > this.length()-1 || index < 0) {
       throw new Error("Invalid index");
@@ -75,10 +75,10 @@ class LinkedList {
 
   /* checking if empty */
   isEmpty() {
-    return this.head? false: true;
+    return this.head===null? true: false;
   }
   length() {
-    if (this.head === null) {
+    if (this.isEmpty()) {
       return 0;
     }
     let itr = this.head;
@@ -90,12 +90,12 @@ class LinkedList {
     return count;
   }
 
-  /* insering many values */
+  /* inserting many values */
   insert_values(item_list) {
     this.head = null;
     item_list.forEach(item => this.add_to_end(item));
   }
-  /* printing node */
+  /* printing list */
   print_list() {
     let itr = this.head;
     let listr = "";
@@ -115,7 +115,7 @@ li.add_to_end(20);
 li.add_to_begining(30);
 li.add_to_end(130);
 li.print_list();
-li.insert_at(4, "name");
+li.insert_at(2, "name");
 li.print_list();
 li.delete_at(2);
 li.print_list();
