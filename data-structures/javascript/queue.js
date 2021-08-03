@@ -23,3 +23,4 @@ queue.enqueue(1);
 queue.print_queue();
 queue.dequeue();
 queue.print_queue();
+console.log(queue.isEmpty());
